@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>snowflake</title>
+		<style>
+			body {
+				background-color: darkslategray;
+			}
+			.snowflake {
+				width: 7px;
+				height: 7px;
+				background-color: white;
+				border-radius: 50%;
+				position: absolute;
+				top: -10px;
+			}
+			@keyframes fall {
+				from {
+				}
+				to {
+					transform: translateY(100vh);
+					opacity: 0;
+				}
+			}
+		</style>
+	</head>
+	<body>
+		<script>
+			const body = document.querySelector('body');
+
+			function snowflake() {
+				const snow = document.createElement('div');
+				const ran = Math.random();
+				const MIN_MINUTE = 10;
+				const duration = ran * 20 + MIN_MINUTE;
+
+				snow.classList.add('snowflake');
+				snow.style.left = `${ran * window.screen.width}px`;
+				snow.style.animationDelay = `${ran * 10}s`;
+				snow.style.opacity = ran;
+				snow.style.animation = `fall ${duration}s linear`;
+
+				body.appendChild(snow);
+				setTimeout(() => {
+					body.removeChild(snow);
+					snowflake();
+				}, (duration + delay) * 1000);
+			}
+
+			for (index = 0; index < 50; index++) {
+				setTimeout(snowflake, index * 500);
+			}
+		</script>
+	</body>
+</html>
