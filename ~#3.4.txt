@@ -1,0 +1,62 @@
+#2-1
+*암기x 이해o
+[Before React]
+1.React.createElement(e, e의 property, e의 내용)
+2.ReactDOM.render(x, x의 위치)
+
+#2-2
+[JSX]
+:javascript 문법, React에서 사용, Babel같은 트랜스파일러 필요
+
+[pre]
+1.변수 선언
+2.내용 작성
+3.props 작성
+4.사용하기
+
+[ex]
+const Title = (
+  <h3 id="title" onClick={() => console.log('clicked!')}>
+    Hello, World!
+  </h3>
+);
+...
+<div>
+  <Title />
+</div>
+
++ 
+1.css/scss: class="" 대신 className="" 사용
+[ex]
+<h3 className="black">Title</h3>
+...
+.black{ color: black; }
+2.데이터 바인딩 시 {} 중괄호 사용(vue랑 다른점)
+3.style 속성 정의 시 style={}에 {}자료형으로 작성 
+[ex] 
+style={{color: 'red'}}
+
+------------------------------------------------------------------------------------
+#2에서 참고하면 좋은 글 
+https://velog.io/@xortm854/React-%EB%A0%8C%EB%8D%94%EB%A7%81%EC%9D%84-%EC%95%8C%EC%95%84%EB%B3%B4%EC%9E%90-1%ED%8E%B8React%EC%9D%98-%ED%8A%B9%EC%84%B1
+------------------------------------------------------------------------------------
+
+#3-1
+[setState]
+: React.useState() 
+  => useState를 사용하면 배열 하나를 우리에게 주는데 거기서 첫번째 요소로 변경 전의 데이터값을, 두번째 요소로 변경할 함수를 넣으면 좋지 않을까
+
+[pre]
+1.destructuring assignment(구조 분해 할당)으로 변수 선언
+2.React.useState()
+3.state를 업데이트할 함수 정의
+
+[ex]
+let [current, setCurrent] = React.useState(0); // param는 초기값 세팅 시에 사용
+const update = () => {
+  setCurrent((e) => e + 1); 
+  // 현재 state를 바탕으로 다음 state값을 계산하고 싶다면 함수를 이용하는 게 안전함
+};
+...
+<button onClick={update}></button>
+
