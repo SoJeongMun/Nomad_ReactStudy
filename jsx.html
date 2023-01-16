@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="ko">
+<body>
+    <div id="root"></div>
+</body>
+<script crossorigin src="https://unpkg.com/react@17/umd/react.development.js"></script>
+<script crossorigin src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
+<script crossorigin src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+<script type="text/babel">
+    const root = document.getElementById('root');
+    // return 꼭 써주기
+    function Title(){
+        return(
+            <h3 id="title">JSX</h3>
+        )
+    }
+    function Button(){
+        return(
+            <button onClick={()=>{document.querySelector('#title').textContent = 'Hello'}} style={{ backgroundColor: 'salmon' }}>click</button>
+            )
+    }
+    // comp는 대문자로
+    const Box = (
+        <div>
+            <Title />
+            <Button />
+        </div>
+    )
+    ReactDOM.render(Box, root);
+</script>
+</html>
