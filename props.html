@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="ko">
+	<body>
+		<div id="root"></div>
+	</body>
+	<script
+		crossorigin
+		src="https://unpkg.com/react@17/umd/react.development.js"
+	></script>
+	<script
+		crossorigin
+		src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"
+	></script>
+	<script
+		crossorigin
+		src="https://unpkg.com/@babel/standalone/babel.min.js"
+	></script>
+	<script type="text/babel">
+		function Btn(arg) {
+			// arg(Object)대신 {txt}라고 바로 key값을 넣어줄 수도 있음
+			return (
+				<button
+					onClick={arg.onClick}
+					style={{
+						backgroundColor: arg.bbac,
+						color: 'white',
+						padding: '10px 20px',
+						border: 0,
+						borderRadius: 10,
+						cursor: 'pointer',
+						marginRight: '5px',
+						fontWeight: arg.bold ? 'bold' : 'normal',
+					}}
+				>
+					{arg.txt}
+				</button>
+			);
+		}
+		const Memorize = React.memo(Btn);
+		function App() {
+			const basic = 'Before';
+			const [txt, setTxt] = React.useState(basic);
+			const changeTxt = () =>
+				setTxt((v) => {
+					const msg = 'Changed';
+					return v === msg ? basic : msg;
+				});
+			const [color, setColor] = React.useState('royalblue');
+			const changeColor = () =>
+				setColor((e) => {
+					return e === 'tomato' ? 'royalblue' : 'tomato';
+				});
+			return (
+				<div>
+					<Btn txt={txt} bold={false} bbac={color} onClick={changeTxt} />
+					<Btn txt="Confirm" bold={true} bbac={color} onClick={changeColor} />
+				</div>
+			);
+		}
+		const root = document.getElementById('root');
+		ReactDOM.render(<App />, root);
+	</script>
+</html>
