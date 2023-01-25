@@ -1,9 +1,12 @@
+import { Link } from "react-router-dom"
+
 function Movie({ image, title, year, summary, genres }) {
 	return (
 		<div>
 			<img src={image} alt="thumbnail" />
 			<h2>
-				{title} ({year})
+				{/* to에 중괄호 열고 써야함.. */}
+				<Link to={'/movie'}>{title} ({year})</Link>
 			</h2>
 			<p>{summary}</p>
 			<ul>
